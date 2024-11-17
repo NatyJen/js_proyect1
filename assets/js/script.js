@@ -11,15 +11,31 @@ async function mostrarCafes() {
     const cafes = await response.json()
     cafecitos = cafes
    
+    crearEncabezado()
+
     cafecitos.forEach(cafe => {
-        console.log(cafe)
         crearCafe(cafe)
     })
 }
 
+function crearEncabezado(){
+    const Encabezado = document.getElementById('encabezado')
+        const divpresentacion = document.createElement('div')
+        divpresentacion.classList.add('divpresenta')
+            const presentacion = document.createElement('h1')            
+                presentacion.textContent="Our Collection"
+                presentacion.style.fontSize="35px"
+            
+            const texto = document.createElement('p')
+                texto.textContent="Introducing our Coffee Collection, a selection of unique coffees from different roast types and origins, expertly roasted in small batches and shipped fresh weekly."
+      
+    divpresentacion.appendChild(presentacion)
+    divpresentacion.appendChild(texto)
+     Encabezado.appendChild(divpresentacion)
+}
+
 // crea el div que contiene el cafecito
 function crearCafe(cafe) {
-
     // obtenemos el div donde vamos a mostrar todos los cafecitos
     const cafecitos = document.getElementById('cafecitos')
 
@@ -29,11 +45,13 @@ function crearCafe(cafe) {
     cafecitos.style.flexWrap = 'wrap'
     cafecitos.style.gap = '1em'
 
+   
+    
     // empezamos con la construccion del cafecito
     const div = document.createElement('div')
     div.classList.add('cafe')
 
-    //Primera Parte
+    //segunda Parte
     // cabecera de la tarjetita
     const cardHeader = document.createElement('div')
 
@@ -59,7 +77,7 @@ function crearCafe(cafe) {
     cardHeader.appendChild(image)
 
 
-    //segunda parte
+    //tercera parte
     const cardFooter = document.createElement('div')
         const cardDescription = document.createElement('div')
 
@@ -103,6 +121,7 @@ function crearCafe(cafe) {
     div.appendChild(cardHeader)
     div.appendChild(cardFooter)
 
+   
     cafecitos.appendChild(div)
 }
 
